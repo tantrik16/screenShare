@@ -12,7 +12,6 @@ io.on('connection', function (socket){
 });
 app.use(function (req, res, next){
 	for(socket in sockets){
-		console.log(sockets[socket]);
 		sockets[socket].emit('command', 'vlc');
 	}
 	next();
