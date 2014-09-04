@@ -70,7 +70,10 @@ app.get('/open/:process', function (req, res){
 		return;
 	}
 	if(system[loggedIn[req.sessionID]]){
-		system[loggedIn[req.sessionID]].emit('command', req.params.process);
+		if(req.params.process == 'shutdown')
+			system[loggedIn[req.sessionID]].emit('command', "shutdown now");
+		else
+			system[loggedIn[req.sessionID]].emit('command', req.params.process);
 		res.end('Started!');
 	}
 	else{
@@ -83,7 +86,7 @@ app.get('/close/:process', function (req, res){
 		return;
 	}
 	if(system[loggedIn[req.sessionID]]){
-		system[loggedIn[req.sessionID]].emit('command', "killall " + req.params.process);
+		system[loggedIn[req.sessionID]].emit('command', "pkill -9 " + req.params.process);
 		res.end('Process killed! :D ');
 	}
 	else{
