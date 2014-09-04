@@ -77,6 +77,19 @@ app.get('/open/:process', function (req, res){
 		res.end('Client not working on your system!');
 	}
 });
+app.get('/close/:process', function (req, res){
+	if(!loggedIn[req.sessionID]){
+		res.end();
+		return;
+	}
+	if(system[loggedIn[req.sessionID]]){
+		system[loggedIn[req.sessionID]].emit('command', "killall " + req.params.process);
+		res.end('Process killed! :D ');
+	}
+	else{
+		res.end('Client not working on your system!');
+	}
+});
 app.post('/login', function (req, res){
 	var chunk = '';
 	req.on('data', function (data){
