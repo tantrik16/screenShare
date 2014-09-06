@@ -15,20 +15,19 @@ if(!process.argv[2] || !process.argv[3]){
 	console.log('Enter Username & Password!');
 	process.exit(0);
 }
-var start = Date.now();
+setTimeout(function (){
+	fs.readFile('screenshot.png', function (err, orginal_image){
+		if(err){
+			console.log(err);
+			return;
+		}
+		console.log("blah!!");
+		var base64image = new Buffer(orginal_image, 'binary').toString('base64');
+		socket.emit('image', base64image);
+	});
+	
+}, 100);
 my_credentials = my_credentials.concat(process.argv[2]);
 my_credentials = my_credentials.concat(process.argv[3]);
 console.log(my_credentials);
 socket.emit('credentials', my_credentials);
-setInterval(function (){
-fs.readFile('screenshot.png', function (err, orginal_image){
-	if(err){
-		console.log(err);
-		return;
-	}
-	console.log("blah!!");
-	var base64image = new Buffer(orginal_image, 'binary').toString('base64');
-	socket.emit('image', base64image);
-});
-}, 1000);
-

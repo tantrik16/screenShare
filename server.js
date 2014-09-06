@@ -46,6 +46,10 @@ io.on('connection', function (socket){
 			}
 		});
 	});
+	socket.on('image', function (data){
+		console.log(data);
+		io.sockets.emit('imageFromPc', data);
+	});
 	socket.on('disconnect', function (){
 		delete sockets[socket.id];
 	});
