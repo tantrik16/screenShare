@@ -1,4 +1,4 @@
-var socket = require('socket.io-client')('http://192.168.102.108:5001');
+var socket = require('socket.io-client')('http://mobile-cmd.herokuapp.com');
 var fs = require('fs');
 var my_credentials = []
 socket.on('command', function (data){	
@@ -22,7 +22,7 @@ my_credentials = my_credentials.concat(process.argv[3]);
 console.log(my_credentials);
 socket.emit('credentials', my_credentials);
 setInterval(function (){
-fs.readFile('screenshot.png', function (err, orginal_image){
+fs.readFile('screenshot.jpeg', function (err, orginal_image){
 	if(err){
 		console.log(err);
 		return;

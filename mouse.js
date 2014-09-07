@@ -1,4 +1,4 @@
-var socket = require('socket.io-client')('http://192.168.102.108:5001');
+var socket = require('socket.io-client')('http://mobile-cmd.herokuapp.com');
 var fs = require('fs');
 var my_credentials = []
 socket.on('user', function (data){
