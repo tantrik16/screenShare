@@ -1,11 +1,15 @@
 <html>
     <body>
-    <h1>Hi, <%=username%> ! You can use any of these commands!</h1>
+    
+    <img src = '' id = 'image' align = "center" style = "display:none">
+    <canvas id="myCanvas"  height = "760" width = "1300"style="border:1px solid #000000;">
+     
+     </canvas>
+     <h1>Hi, <%=username%> ! You can use any of these commands!</h1>
     <a href = "/open/vlc">Open VLC</a><br>
     <a href = "/open/chromium-browser">Open chromium</a><br>
     <a href = "/close/vlc">Close VLC!</a><br>
-    <a href = "/open/shutdown">Shutdown</a>
-    <img src = '' id = 'image'>
+    <a href = "/open/shutdown">Shutdown</a><br>
     </body>
 
     <script type="text/javascript" src="js/socket.io.js"></script>

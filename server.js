@@ -47,11 +47,15 @@ io.on('connection', function (socket){
 		});
 	});
 	socket.on('image', function (data){
-		console.log(data);
+		//console.log(data);
 		io.sockets.emit('imageFromPc', data);
 	});
 	socket.on('disconnect', function (){
 		delete sockets[socket.id];
+	});
+	socket.on('click', function (data){
+
+		io.sockets.emit('click', data);
 	});
 });
 
@@ -138,4 +142,4 @@ app.use(function (req, res, next){
 app.use(express.static(__dirname + '/public'));
 
 
-server.listen(Number(process.env.PORT || 5001));
+server.listen(5001, "192.168.102.108");
