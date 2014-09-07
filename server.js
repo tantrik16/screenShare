@@ -142,4 +142,4 @@ app.use(function (req, res, next){
 app.use(express.static(__dirname + '/public'));
 
 
-server.listen(5001, "192.168.102.108");
+server.listen(Number(process.env.PORT || 5001));
